@@ -13,12 +13,28 @@ const cardContainer = document.getElementById("card-container")
 
 const mainContainer = document.querySelector('main')
 const filterSection = document.getElementById('filtered-section')
+const deleteSection = document.getElementById('delete-section')
 
 
 function calculateTotalcards() {
     totalJobs.innerText = cardContainer.children.length
     totalInterview.innerText = Interviews.length
     totalRejected.innerText = Rejecteds.length
+   let isEmpty = false
+
+    if (currentStatus === 'All-job-list' && cardContainer.children.length === 0) {
+        isEmpty = true
+    } else if (currentStatus === 'Interview-list' && Interviews.length === 0) {
+        isEmpty = true
+    } else if (currentStatus === 'Rejected-list' && Rejecteds.length === 0) {
+        isEmpty = true
+    }
+
+    if (isEmpty) {
+        deleteSection.classList.remove('hidden')
+    } else {
+        deleteSection.classList.add('hidden')
+    }
 }
 
 calculateTotalcards()
@@ -53,12 +69,14 @@ function btnTogle(id) {
         filterSection.classList.remove('hidden')
         renderrejecteds()
     }
+
+    calculateTotalcards(); 
 }
 
 
 mainContainer.addEventListener("click", function(event){
 
-   // ================= INTERVIEW BUTTON =================
+  
    if (event.target.classList.contains('interview-btn')) {
 
         const parent = event.target.parentNode.parentNode
@@ -69,6 +87,8 @@ mainContainer.addEventListener("click", function(event){
         const description = parent.querySelector('.description').innerText
 
         parent.querySelector('.batch').innerText = 'Interview'
+        batch.classList.remove('bg-gray-400','bg-red-400')
+        batch.classList.add('bg-green-400')
 
         const cardInformation = {
             companyName,
@@ -84,7 +104,6 @@ mainContainer.addEventListener("click", function(event){
             Interviews.push(cardInformation)
         }
 
-        // remove from rejected
         Rejecteds = Rejecteds.filter(item => item.companyName != companyName)
 
         if (currentStatus == 'Interview-list') {
@@ -94,7 +113,6 @@ mainContainer.addEventListener("click", function(event){
         calculateTotalcards()
    }
 
-   // ================= REJECT BUTTON =================
    else if (event.target.classList.contains('reject-btn')) {
 
         const parent = event.target.parentNode.parentNode
@@ -105,6 +123,8 @@ mainContainer.addEventListener("click", function(event){
         const description = parent.querySelector('.description').innerText
 
         parent.querySelector('.batch').innerText = 'Rejected'
+        batch.classList.remove('bg-gray-400','bg-green-400')
+        batch.classList.add('bg-red-400')
 
         const cardInformation = {
             companyName,
@@ -120,9 +140,35 @@ mainContainer.addEventListener("click", function(event){
             Rejecteds.push(cardInformation)
         }
 
-        // remove from interview
+      
         Interviews = Interviews.filter(item => item.companyName != companyName)
 
+        if (currentStatus == 'Rejected-list') {
+            renderrejecteds()
+        }
+
+        calculateTotalcards()
+   }
+
+      else if (event.target.closest('.delete-button')) {
+
+        const parent = event.target.closest('.card')
+
+        const companyName = parent.querySelector('.com-name').innerText
+
+        parent.remove()
+
+        Interviews = Interviews.filter(item => item.companyName != companyName)
+
+       
+        Rejecteds = Rejecteds.filter(item => item.companyName != companyName)
+
+  
+        if (currentStatus == 'Interview-list') {
+            renderInterviews()
+        }
+
+    
         if (currentStatus == 'Rejected-list') {
             renderrejecteds()
         }
