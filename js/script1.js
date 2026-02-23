@@ -72,15 +72,18 @@ function btnTogle(id) {
     if (id == 'Interview-list') {
         cardContainer.classList.add('hidden');
         filterSection.classList.remove('hidden')
+        deleteSection.classList.add('hidden')
         renderInterviews()
 
     } else if (id == 'All-job-list') {
         cardContainer.classList.remove('hidden');
         filterSection.classList.add('hidden')
+        deleteSection.classList.add('hidden')
 
     } else if (id == 'Rejected-list') {
         cardContainer.classList.add('hidden');
         filterSection.classList.remove('hidden')
+        deleteSection.classList.add('hidden')
         renderrejecteds()
     }
 
@@ -200,7 +203,7 @@ function renderInterviews() {
      for(let interview of Interviews)
      {
          let div = document.createElement('div');
-         div.className ='mt-10 space-y-7'
+         div.className ='my-10 space-y-7'
          div.innerHTML= `
           <div class="card space-y-1.5 bg-white rounded-lg p-6">
     <div class="font-bold flex justify-between">
@@ -223,7 +226,7 @@ function renderInterviews() {
     </div>
   </div>
          `
-          filterSection.appendChild(div)
+      filterSection.appendChild(div)
 
      }
 }
@@ -236,7 +239,7 @@ function renderrejecteds() {
      for(let list of Rejecteds)
      {
          let div = document.createElement('div');
-         div.className ='mt-10 space-y-7'
+         div.className ='my-10 space-y-7'
          div.innerHTML= `
           <div class="card space-y-1.5 bg-white rounded-lg p-6">
     <div class="font-bold flex justify-between">
