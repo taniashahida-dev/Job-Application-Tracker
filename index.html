@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Application Tracker</title>
+      <!-- Tailwind link -->
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Icons -->
     <link
       rel="stylesheet"
@@ -12,26 +14,30 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <!-- CSS link -->
-    <link rel="stylesheet" href="./tailwind.init.css" />
-    <!-- Tailwind link -->
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+* {
+    font-family: "Geist", sans-serif;
+}
+  </style>
+  
+
   </head>
   <body class="bg-gray-200">
     <header class="w-10/12 mx-auto mt-10">
       <h1 class="text-3xl lg:text-5xl font-bold">Job Application Tracker</h1>
       <div class="grid grid-cols-3 gap-3">
-        <div class="bg-white p-5 my-5 rounded-lg">
+        <div  class="bg-white p-5 my-5 rounded-lg">
           <p>Total</p>
-          <p class="font-bold text-3xl">0</p>
+          <p id="total-jobs" class="font-bold text-3xl">0</p>
         </div>
         <div class="bg-white p-5 my-5 rounded-lg">
-          <p>Interview</p>
-          <p class="font-bold text-3xl text-green-700">0</p>
+          <p >Interview</p>
+          <p id="total-interview" class="font-bold text-3xl text-green-700">0</p>
         </div>
         <div class="bg-white p-5 my-5 rounded-lg">
-          <p>Rejected</p>
-          <p class="font-bold text-3xl text-red-700">0</p>
+          <p >Rejected</p>
+          <p id="total-rejected" class="font-bold text-3xl text-red-700">0</p>
         </div>
       </div>
     </header>
@@ -40,20 +46,18 @@
       <section class="space-y-2.5">
         <div class="flex justify-between">
           <h2 class="font-bold text-2xl">Available Jobs</h2>
-          <p class="text-gray-800"><span>0</span>Jobs</p>
+          <p id="jobs" class="text-gray-800"><span>0</span>Jobs</p>
         </div>
         <div>
-          <button class="py-1 px-5 mr-3 rounded-lg bg-blue-700 text-white">
-            All
-          </button>
-          <button class="py-1 px-5 mr-3 rounded-lg bg-white">Interview</button>
-          <button class="py-1 px-5 mt-2.5 lg:mr-3 rounded-lg bg-white">
+          <button id="All-job-list" class="py-1 px-5 mr-3 rounded-lg bg-blue-700 text-white"> All </button>
+          <button id="Interview-list" class="py-1 px-5 mr-3 rounded-lg bg-white">Interview</button>
+          <button id="Rejected-list" class="py-1 px-5 mt-2.5 lg:mr-3 rounded-lg bg-white">
             Rejected
           </button>
         </div>
       </section>
 
-      <section class="card-container mt-10 space-y-7 ">
+      <section id="card-container" class=" mt-10 space-y-7 ">
 
   <!-- 1 -->
   <div class="card space-y-1.5 bg-white rounded-lg p-6">
@@ -234,9 +238,33 @@
       </section>
 
 
+      <section id="delete-secton" class="hidden">
+        <div class="text-center space-y-3 bg-white my-8 py-8 lg:py-40 rounded-lg">
+    
+    <!-- Icon -->
+    <div class="flex justify-center">
+      <div class="w-16 h-16 bg-blue-200 rounded-lg flex items-center justify-center">
+        <i class="fa-regular fa-file-lines text-3xl text-blue-600"></i>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <h2 class="text-xl font-bold text-gray-800">
+      No jobs available
+    </h2>
+
+    <!-- Subtitle -->
+    <p class="text-gray-500">
+      Check back soon for new job opportunities
+    </p>
+
+  </div>
+
+      </section>
+
       
     </main>
 
-    <script src="./script.js"></script>
+    <script src="./js/script1.js"></script>
   </body>
 </html>
