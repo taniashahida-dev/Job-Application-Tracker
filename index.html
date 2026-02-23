@@ -49,13 +49,17 @@
           <p id="jobs" class="text-gray-800"><span>0</span>Jobs</p>
         </div>
         <div>
-          <button id="All-job-list" class="py-1 px-5 mr-3 rounded-lg bg-blue-700 text-white"> All </button>
-          <button id="Interview-list" class="py-1 px-5 mr-3 rounded-lg bg-white">Interview</button>
-          <button id="Rejected-list" class="py-1 px-5 mt-2.5 lg:mr-3 rounded-lg bg-white">
+          <button onclick="btnTogle('All-job-list')"  id="All-job-list" class="py-1 px-5 mr-3 rounded-lg bg-blue-700 text-white"> All </button>
+          <button  onclick="btnTogle('Interview-list')" id="Interview-list" class="py-1 px-5 mr-3 rounded-lg bg-white ">Interview</button>
+          <button  onclick="btnTogle('Rejected-list')" id="Rejected-list" class="py-1 px-5 mt-2.5 lg:mr-3 rounded-lg bg-white">
             Rejected
           </button>
         </div>
       </section>
+
+ <section id="filtered-section" class="hidden">
+
+        </section>
 
       <section id="card-container" class=" mt-10 space-y-7 ">
 
@@ -238,29 +242,28 @@
       </section>
 
 
-      <section id="delete-secton" class="hidden">
+      <!-- <section id="delete-secton" class="hidden">
         <div class="text-center space-y-3 bg-white my-8 py-8 lg:py-40 rounded-lg">
     
-    <!-- Icon -->
     <div class="flex justify-center">
       <div class="w-16 h-16 bg-blue-200 rounded-lg flex items-center justify-center">
         <i class="fa-regular fa-file-lines text-3xl text-blue-600"></i>
       </div>
     </div>
 
-    <!-- Title -->
+ 
     <h2 class="text-xl font-bold text-gray-800">
       No jobs available
     </h2>
 
-    <!-- Subtitle -->
+
     <p class="text-gray-500">
       Check back soon for new job opportunities
     </p>
 
   </div>
 
-      </section>
+      </section> -->
 
       
     </main>
