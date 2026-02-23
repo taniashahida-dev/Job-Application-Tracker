@@ -1,6 +1,6 @@
 let Interviews = []
 let Rejecteds = []
-let currentStatus = 'All'
+let currentStatus = 'All-job-list'
 
 let totalJobs = document.getElementById("total-jobs")
 let totalInterview = document.getElementById("total-interview")
@@ -14,7 +14,21 @@ const cardContainer = document.getElementById("card-container")
 const mainContainer = document.querySelector('main')
 const filterSection = document.getElementById('filtered-section')
 const deleteSection = document.getElementById('delete-section')
+const jobsCount = document.querySelector('#jobs span')
+function Jobs() {
 
+    if (currentStatus === 'All-job-list') {
+        jobsCount.innerText = cardContainer.children.length
+    }
+
+    else if (currentStatus === 'Interview-list') {
+        jobsCount.innerText = Interviews.length
+    }
+
+    else if (currentStatus === 'Rejected-list') {
+        jobsCount.innerText = Rejecteds.length
+    }
+}
 
 function calculateTotalcards() {
     totalJobs.innerText = cardContainer.children.length
@@ -38,7 +52,7 @@ function calculateTotalcards() {
 }
 
 calculateTotalcards()
-
+ Jobs()
 
 function btnTogle(id) {
     allJobList.classList.add('bg-white', 'text-black')
@@ -71,6 +85,7 @@ function btnTogle(id) {
     }
 
     calculateTotalcards(); 
+    Jobs()
 }
 
 
@@ -87,8 +102,7 @@ mainContainer.addEventListener("click", function(event){
         const description = parent.querySelector('.description').innerText
 
         parent.querySelector('.batch').innerText = 'Interview'
-        batch.classList.remove('bg-gray-400','bg-red-400')
-        batch.classList.add('bg-green-400')
+     
 
         const cardInformation = {
             companyName,
@@ -111,6 +125,7 @@ mainContainer.addEventListener("click", function(event){
         }
 
         calculateTotalcards()
+         Jobs()
    }
 
    else if (event.target.classList.contains('reject-btn')) {
@@ -123,8 +138,7 @@ mainContainer.addEventListener("click", function(event){
         const description = parent.querySelector('.description').innerText
 
         parent.querySelector('.batch').innerText = 'Rejected'
-        batch.classList.remove('bg-gray-400','bg-green-400')
-        batch.classList.add('bg-red-400')
+       
 
         const cardInformation = {
             companyName,
@@ -148,6 +162,7 @@ mainContainer.addEventListener("click", function(event){
         }
 
         calculateTotalcards()
+         Jobs()
    }
 
       else if (event.target.closest('.delete-button')) {
@@ -174,6 +189,7 @@ mainContainer.addEventListener("click", function(event){
         }
 
         calculateTotalcards()
+         Jobs()
    }
 
 })
