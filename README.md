@@ -26,15 +26,15 @@ document.body.appendChild(div);
 
 3. What is Event Bubbling? How does it work?
 
-Event bubbling is a process where an event starts from the target element and moves up to its parent elements.
+Ans: Event bubbling is a process where an event starts from the target element and moves up to its parent elements.
 When we click a child element, the event first works on the child, then goes to the parent, and continues upward.
 
 4. What is Event Delegation? Why is it useful?
 
-Event delegation is a technique where we add one event listener to a parent element instead of adding many listeners to child elements.
+Ans: Event delegation is a technique where we add one event listener to a parent element instead of adding many listeners to child elements.
 It is useful because it reduces code, improves performance, and works for dynamically added elements.
 
 5. Difference between preventDefault() and stopPropagation()
 
-preventDefault() stops the browser’s default action, like stopping a link from opening.
+Ans: preventDefault() stops the browser’s default action, like stopping a link from opening.
 stopPropagation() stops the event from moving to parent elements.
